@@ -1,0 +1,54 @@
+@page "{id:int}"
+@model Practica3.Pages.Usuarios.EditarModel
+@{
+    ViewData["Title"] = "Editar Usuario";
+}
+
+<div class="container">
+    <h1 class="display-4 mb-4">Editar Usuario</h1>
+
+    <div class="row">
+        <div class="col-md-6">
+            <form method="post">
+                <input type="hidden" asp-for="Usuario.Id" />
+                <input type="hidden" asp-for="Usuario.FechaRegistro" />
+
+                <div class="mb-3">
+                    <label asp-for="Usuario.Nombre" class="form-label">Nombre</label>
+                    <input asp-for="Usuario.Nombre" class="form-control" />
+                    <span asp-validation-for="Usuario.Nombre" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Usuario.Email" class="form-label">Email</label>
+                    <input asp-for="Usuario.Email" class="form-control" />
+                    <span asp-validation-for="Usuario.Email" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Usuario.Edad" class="form-label">Edad</label>
+                    <input asp-for="Usuario.Edad" class="form-control" type="number" />
+                    <span asp-validation-for="Usuario.Edad" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3 form-check">
+                    <input asp-for="Usuario.Activo" class="form-check-input" />
+                    <label asp-for="Usuario.Activo" class="form-check-label">Usuario Activo</label>
+                </div>
+
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Guardar Cambios
+                    </button>
+                    <a asp-page="/Index" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Volver
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+} 

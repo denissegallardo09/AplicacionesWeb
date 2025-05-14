@@ -1,0 +1,52 @@
+@page "{id:int}"
+@model Practica3.Pages.Usuarios.EliminarModel
+@{
+    ViewData["Title"] = "Eliminar Usuario";
+}
+
+<div class="container">
+    <h1 class="display-4 mb-4">Eliminar Usuario</h1>
+
+    <div class="alert alert-danger">
+        <h4>¿Está seguro de que desea eliminar este usuario?</h4>
+        <p>Esta acción no se puede deshacer.</p>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Detalles del Usuario</h5>
+            <dl class="row">
+                <dt class="col-sm-3">Nombre</dt>
+                <dd class="col-sm-9">@Model.Usuario.Nombre</dd>
+
+                <dt class="col-sm-3">Email</dt>
+                <dd class="col-sm-9">@Model.Usuario.Email</dd>
+
+                <dt class="col-sm-3">Edad</dt>
+                <dd class="col-sm-9">@Model.Usuario.Edad años</dd>
+
+                <dt class="col-sm-3">Fecha de Registro</dt>
+                <dd class="col-sm-9">@Model.Usuario.FechaRegistro.ToString("dd/MM/yyyy")</dd>
+
+                <dt class="col-sm-3">Estado</dt>
+                <dd class="col-sm-9">
+                    <span class="badge @(Model.Usuario.Activo ? "bg-success" : "bg-danger")">
+                        @(Model.Usuario.Activo ? "Activo" : "Inactivo")
+                    </span>
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+    <form method="post">
+        <input type="hidden" asp-for="Usuario.Id" />
+        <div class="mb-3">
+            <button type="submit" class="btn btn-danger">
+                <i class="fas fa-trash"></i> Confirmar Eliminación
+            </button>
+            <a asp-page="/Index" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Volver
+            </a>
+        </div>
+    </form>
+</div> 
